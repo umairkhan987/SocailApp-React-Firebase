@@ -47,7 +47,8 @@ exports.getScream = (req, res) => {
             }
             screamData = doc.data();
             screamData.screamId = doc.id;
-            return db.collection('comments').orderBy('createdAt', 'desc').where('screamId', '==', req.params.screamId).get();
+            return db.collection('comments').where('screamId', '==', doc.id)
+                .orderBy('createdAt', 'desc').get();
         })
         .then(data => {
             screamData.comments = [];
@@ -83,10 +84,10 @@ exports.deleteScream = (req, res) => {
 }
 
 exports.commentOnScream = (req, res) => {
-    if (req.body.body.trim() === '') return res.status(400).json({ error: "Must not be empty" })
+    if (req.body.body.trim() === '') return res.status(400).json({ comment: "Must not be empty" })
     const newComment = {
         body: req.body.body,
-        createAt: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
         screamId: req.params.screamId,
         userHandle: req.user.handle,
         userImage: req.user.imageUrl
