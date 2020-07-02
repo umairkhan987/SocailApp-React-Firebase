@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const app = require('express')();
 
-const { getAllScreams, postOneScreams, getScream, commentOnScream, likeScream, unlikeScream } = require('./handlers/screams');
+const { getAllScreams, postOneScreams, getScream, deleteScream, commentOnScream, likeScream, unlikeScream } = require('./handlers/screams');
 const { signup, login, uploadImage, addUserDetails, getAuthenticatedUser } = require('./handlers/users');
 const { FBAuth } = require('./util/fbAuth');
 
@@ -9,7 +9,7 @@ const { FBAuth } = require('./util/fbAuth');
 app.get('/screams', getAllScreams);
 app.post("/scream", FBAuth, postOneScreams);
 app.get("/scream/:screamId", getScream);
-// TODO: delete scream
+app.delete('/scream/:screamId', FBAuth, deleteScream);
 app.get('/scream/:screamId/like', FBAuth, likeScream);
 app.get('/scream/:screamId/unlike', FBAuth, unlikeScream);
 app.post('/scream/:screamId/comment', FBAuth, commentOnScream);
