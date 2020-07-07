@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { PropTypes } from "prop-types";
+import ScreamDialog from "./ScreamDialog";
 // material-ui component
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -115,6 +116,7 @@ export class Scream extends Component {
               <ChatIcon color="primary" />
             </MyButton>
             {commentCount} comments
+            <ScreamDialog screamId={screamId} userHandle={userHandle} />
           </CardContent>
         </Card>
       </div>

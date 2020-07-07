@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import MyButton from "../util/myButton";
+import PostScream from "./PostScream";
 // Redux stuff
 import { connect } from "react-redux";
 // material-ui improt
@@ -9,7 +10,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 // Icons
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
@@ -19,10 +19,7 @@ const Navbar = ({ authenticated }) => {
       <Toolbar className="nav-container">
         {authenticated ? (
           <React.Fragment>
-            <MyButton tip="Post a scream!">
-              <AddIcon />
-            </MyButton>
-
+            <PostScream />
             <Link to="/">
               <MyButton tip="Home">
                 <HomeIcon />
