@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import withStyle from "@material-ui/core/styles/withStyles";
-import MyButton from "../util/myButton";
+import MyButton from "../../util/myButton";
 // material-ui
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -11,7 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 // Redux stuff
 import { connect } from "react-redux";
-import { deleteScream } from "./../redux/actions/dataActions";
+import { deleteScream } from "../../redux/actions/dataActions";
 
 const styles = (theme) => ({
   ...theme.spreadThis,

@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
-import MyButton from "../util/myButton";
+import MyButton from "../../util/myButton";
 // material-ui
 import withStyle from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 // Redux
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 
 const styles = (theme) => ({ ...theme.profileStyling });
 
@@ -74,7 +74,7 @@ class Profile extends Component {
             <div className="profile-details">
               <MuiLink
                 component={Link}
-                to={`/users/${handle}`}
+                to={`/user/${handle}`}
                 color="primary"
                 variant="h5"
               >

@@ -3,8 +3,8 @@ import { PropTypes } from "prop-types";
 // material-ui
 import Grid from "@material-ui/core/Grid";
 // component
-import Scream from "../components/scream";
-import Profile from "../components/Profile";
+import Scream from "../components/scream/scream";
+import Profile from "../components/profile/Profile";
 // redux stuff
 import { connect } from "react-redux";
 import { getScreams } from "./../redux/actions/dataActions";

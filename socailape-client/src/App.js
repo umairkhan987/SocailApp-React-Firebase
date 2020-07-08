@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import './App.css';
 
-import Navbar from './components/navbar';
+import Navbar from './components/layout/navbar';
 import AuthRoute from './util/AuthRoute';
 //Redux
 import { Provider } from 'react-redux';

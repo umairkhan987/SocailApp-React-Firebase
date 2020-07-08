@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
-import MyButton from "../util/myButton";
-import PostScream from "./PostScream";
+import MyButton from "../../util/myButton";
+import PostScream from "../scream/PostScream";
 // Redux stuff
 import { connect } from "react-redux";
 // material-ui improt

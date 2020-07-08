@@ -18,7 +18,7 @@ export const POST_SCREAM = 'SET_SCREAM';
 export const LIKE_SCREAM = 'LIKE_SCREAM';
 export const UNLIKE_SCREAM = 'UnLIKE_SCREAM';
 export const DELETE_SCREAM = 'DELETE_SCREAM';
-
+export const SUBMIT_COMMENT = 'SUBMIT_COMMENT';
 
 
 
