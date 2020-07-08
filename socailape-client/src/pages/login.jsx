@@ -37,11 +37,19 @@ class Login extends Component {
     this.props.loginUser(userData, this.props.history);
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
+  static getDerivedStateFromProps(props, state) {
+    if (props.UI.errors) {
+      return { errors: props.UI.errors };
     }
+    return null;
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("component will receive call");
+  //   if (nextProps.UI.errors) {
+  //     this.setState({ errors: nextProps.UI.errors });
+  //   }
+  // }
 
   render() {
     const {

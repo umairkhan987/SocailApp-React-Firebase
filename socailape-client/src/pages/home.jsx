@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
+import ScreamSkeleton from "../util/ScreamSkeleton";
 // material-ui
 import Grid from "@material-ui/core/Grid";
 // component
@@ -19,7 +20,7 @@ class Home extends Component {
     let recentScreamMarkup = !loading ? (
       screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
     ) : (
-      <p>Loading....</p>
+      <ScreamSkeleton />
     );
 
     return (

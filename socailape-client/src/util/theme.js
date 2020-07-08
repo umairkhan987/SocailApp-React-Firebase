@@ -48,6 +48,7 @@ export default {
             marginBottom: 20,
         }
     },
+
     profileStyling: {
         paper: {
             padding: 20

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import ProfileSkeleton from "../../util/ProfileSkeleton";
 import EditDetails from "./EditDetails";
 import MyButton from "../../util/myButton";
 // material-ui
@@ -135,7 +136,7 @@ class Profile extends Component {
         </Paper>
       )
     ) : (
-      <p>Loading....</p>
+      <ProfileSkeleton />
     );
 
     return profileMarkup;

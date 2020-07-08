@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import withStyle from "@material-ui/core/styles/withStyles";
-import dayjs from "dayjs";
 // material-ui
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-// Icons
-import CircularProgress from "@material-ui/core/CircularProgress";
 // Redux stuff
 import { connect } from "react-redux";
 import { submitComment } from "../../redux/actions/dataActions";

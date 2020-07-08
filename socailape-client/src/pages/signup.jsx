@@ -45,11 +45,18 @@ class Signup extends Component {
     this.props.signupUser(newUserData, this.props.history);
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
+  static getDerivedStateFromProps(props, state) {
+    if (props.UI.errors) {
+      return { errors: props.UI.errors };
     }
+
+    return null;
   }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.UI.errors) {
+  //     this.setState({ errors: nextProps.UI.errors });
+  //   }
+  // }
 
   render() {
     const {
