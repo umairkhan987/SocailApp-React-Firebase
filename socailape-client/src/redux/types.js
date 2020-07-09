@@ -14,7 +14,7 @@ export const STOP_LOADING_UI = 'STOP_LOADING_UI';
 // Data reducer types
 export const SET_SCREAMS = 'SET_SCREAMS';
 export const SET_SCREAM = 'SET_SCREAM';
-export const POST_SCREAM = 'SET_SCREAM';
+export const POST_SCREAM = 'POST_SCREAM';
 export const LIKE_SCREAM = 'LIKE_SCREAM';
 export const UNLIKE_SCREAM = 'UnLIKE_SCREAM';
 export const DELETE_SCREAM = 'DELETE_SCREAM';

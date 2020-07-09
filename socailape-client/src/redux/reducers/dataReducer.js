@@ -23,6 +23,13 @@ export default function (state = initialState, action) {
                 screams: action.payload,
                 loading: false,
             }
+
+        case POST_SCREAM:
+            return {
+                ...state,
+                screams: [action.payload, ...state.screams]
+            }
+
         case SET_SCREAM:
             return {
                 ...state,
@@ -44,14 +51,17 @@ export default function (state = initialState, action) {
             return {
                 ...state,
             }
-        case POST_SCREAM:
-            return {
-                ...state,
-                screams: [action.payload, ...state.screams]
-            }
         case SUBMIT_COMMENT:
+            let ind = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId);
+            let updatedScreams = JSON.parse(JSON.stringify(state.screams));
+            updatedScreams[ind].commentCount += 1;
+
+            if (state.scream.screamId === action.payload.screamId) {
+                state.scream.commentCount += 1;
+            }
             return {
                 ...state,
+                screams: updatedScreams,
                 scream: {
                     ...state.scream,
                     comments: [action.payload, ...state.scream.comments],
