@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/icon.png";
 import { Link } from "react-router-dom";
+import Joi from "joi-browser";
+import Validate from "./../util/validateField";
 
 import TextField from "@material-ui/core/TextField";
 import withStyle from "@material-ui/core/styles/withStyles";
@@ -22,6 +24,11 @@ class Login extends Component {
     errors: {},
   };
 
+  schema = {
+    email: Joi.string().email().required().label("Email"),
+    password: Joi.string().min(6).required().label("Password"),
+  };
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -34,22 +41,26 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+    const errors = Validate(userData, this.schema);
+    this.setState({ errors: errors || {} });
+    if (errors) return;
+
     this.props.loginUser(userData, this.props.history);
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.UI.errors) {
-      return { errors: props.UI.errors };
-    }
-    return null;
-  }
-
-  // componentWillReceiveProps(nextProps) {
-  //   console.log("component will receive call");
-  //   if (nextProps.UI.errors) {
-  //     this.setState({ errors: nextProps.UI.errors });
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.UI.errors) {
+  //     return { errors: props.UI.errors };
   //   }
+  //   return null;
   // }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("component will receive call");
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
 
   render() {
     const {

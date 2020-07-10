@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/icon.png";
 import { Link } from "react-router-dom";
-
+import Joi from "joi-browser";
+import Validate from "./../util/validateField";
+// material-ui
 import TextField from "@material-ui/core/TextField";
 import withStyle from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
@@ -26,6 +28,23 @@ class Signup extends Component {
     errors: {},
   };
 
+  schema = {
+    email: Joi.string().email().required().label("Email"),
+    password: Joi.string().min(6).required().label("Password"),
+    confirmPassword: Joi.string()
+      .required()
+      .valid(Joi.ref("password"))
+      .label("Confrim Password")
+      .options({
+        language: {
+          any: {
+            allowOnly: "do not match with Password",
+          },
+        },
+      }),
+    handle: Joi.string().required().label("Handle"),
+  };
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -41,22 +60,26 @@ class Signup extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle,
     };
+    const errors = Validate(newUserData, this.schema);
+    this.setState({ errors: errors || {} });
+    if (errors) return;
 
     this.props.signupUser(newUserData, this.props.history);
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.UI.errors) {
-      return { errors: props.UI.errors };
-    }
-
-    return null;
-  }
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.UI.errors) {
-  //     this.setState({ errors: nextProps.UI.errors });
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.UI.errors) {
+  //     return { errors: props.UI.errors };
   //   }
+
+  //   return null;
   // }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
 
   render() {
     const {
@@ -65,7 +88,6 @@ class Signup extends Component {
     } = this.props;
 
     const { errors } = this.state;
-
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
